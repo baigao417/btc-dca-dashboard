@@ -1,0 +1,2 @@
+# Optional on hosts lacking an IANA time zone database. UTC requires no package.
+tzdata>=2024.1

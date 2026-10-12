@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BTC 定投研究工作台</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div><p class="eyebrow">BTC / RESEARCH MODE</p><h1>BTC 定投研究工作台</h1></div>
+      <div class="top-actions"><span id="serviceBadge" class="badge">连接中</span><button id="refreshBtn" class="button primary">行情刷新</button></div>
+    </header>
+    <p class="note">研究草稿，不构成投资建议。确认仅记录选择，不执行交易。</p>
+    <p id="errorMessage" role="alert"></p>
+    <section class="status-strip" aria-label="服务状态">
+      <div><span class="label">计划</span><strong id="scheduleValue">--</strong></div>
+      <div><span class="label">下次计划</span><strong id="nextRun">--</strong></div>
+      <div><span class="label">调度心跳</span><strong id="heartbeat">--</strong></div>
+      <div><span class="label">数据观察时间</span><strong id="observedAt">--</strong></div>
+    </section>
+    <section class="grid hero-grid">
+      <article class="panel decision-panel">
+        <div class="panel-heading"><span>最近研究草稿</span><span id="decisionStatus" class="status-pill">--</span></div>
+        <div class="decision-main">
+          <div><p id="actionLabel" class="action-label">等待数据</p><p id="amountLabel" class="amount-label">--</p><p id="decisionHint" class="muted">--</p></div>
+          <div class="decision-actions"><button id="confirmBtn" class="button primary" disabled>确认记录</button><button id="skipBtn" class="button ghost" disabled>跳过</button></div>
+        </div>
+        <ul id="rationaleList" class="rationale"></ul>
+      </article>
+      <article class="panel data-panel">
+        <div class="panel-heading"><span>市场快照</span><span id="sourceLabel" class="muted">--</span></div>
+        <div class="metric-grid">
+          <div><span class="label">BTC 价格</span><strong id="price">--</strong></div>
+          <div><span class="label">200 日均线</span><strong id="sma200">--</strong></div>
+          <div><span class="label">365 日回撤</span><strong id="drawdown">--</strong></div>
+          <div><span class="label">30 日年化波动</span><strong id="volatility">--</strong></div>
+        </div>
+        <p id="dataNote" class="note">--</p>
+      </article>
+    </section>
+    <section class="grid lower-grid">
+      <article class="panel settings-panel">
+        <div class="panel-heading"><span>调度与预算</span><span id="timezoneLabel" class="muted">UTC</span></div>
+        <form id="settingsForm" class="settings-form">
+          <label>每日计划时间<input id="scheduleInput" type="time" required></label>
+          <label>月度演算预算（USD）<input id="budgetInput" type="number" min="0" max="1000000" step="1" required></label>
+          <button class="button dark" type="submit">保存设置</button>
+        </form>
+      </article>
+      <article class="panel timeline-panel">
+        <div class="panel-heading"><span>决策时间线</span><button id="demoBtn" class="text-button">合成演示</button></div>
+        <div id="timeline" class="timeline"></div>
+      </article>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
